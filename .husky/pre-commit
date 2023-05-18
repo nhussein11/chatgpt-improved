@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "[INFO] Running 'lint-staged' [pre-commit hook]"
 yarn lint-staged
+echo "[INFO] Running tests [pre-commit hook]"
 yarn test
