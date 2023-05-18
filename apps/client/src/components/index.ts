@@ -1,3 +1,4 @@
 import SideMenu from "./SideMenu/SideMenu";
+import ChatBox from "./ChatBox/ChatBox";
 
-export {SideMenu};
+export {ChatBox,SideMenu};
