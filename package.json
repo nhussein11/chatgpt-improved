@@ -71,12 +71,10 @@
     "vite-tsconfig-paths": "^4.0.2",
     "vitest": "^0.31.0"
   },
-  "husky": {
-    "lint-staged": {
-      "*.{js,jsx,ts,tsx,json,md}": [
-        "eslint --fix",
-        "prettier --write"
-      ]
-    }
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
