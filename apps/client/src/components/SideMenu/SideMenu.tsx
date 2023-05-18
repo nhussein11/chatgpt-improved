@@ -1,4 +1,3 @@
-import ChatBox from '../ChatBox/ChatBox';
 import styles from './sideMenu.module.css';
 
 const SideMenu = () => {

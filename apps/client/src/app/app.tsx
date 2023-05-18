@@ -5,7 +5,6 @@ const App = () => {
   return (
     <div className="flex h-screen flex-row bg-gray-400">
       <SideMenu />
-
       <section>
         <ChatBox />
       </section>
