@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 
-echo "running commitlint"
+echo "[INFO] Running 'lint-staged' [commit-msg hook]"
 npx commitlint --edit $1
