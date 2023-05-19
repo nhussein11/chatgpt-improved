@@ -1,4 +1,5 @@
-import SideMenu from "./SideMenu/SideMenu";
-import ChatBox from "./ChatBox/ChatBox";
+import SideMenu from './SideMenu/SideMenu';
+import ChatBox from './ChatBox/ChatBox';
+import ChatPrompt from './ChatPrompt/ChatPrompt';
 
-export {ChatBox,SideMenu};
+export { ChatBox, ChatPrompt, SideMenu };
