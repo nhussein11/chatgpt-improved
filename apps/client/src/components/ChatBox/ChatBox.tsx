@@ -1,10 +1,15 @@
+import ChatMessages from '../ChatMessages/ChatMessages';
+import ChatPrompt from '../ChatPrompt/ChatPrompt';
+
 const ChatBox = () => {
   return (
-    <>
-      <div className="flex w-screen h-full flex-col items-center justify-center border-5 ">
-        <h1 className="absolute top-0 mt-10 text-2xl text-white font-bold">ChatBox</h1>
+    <div className="flex h-full w-full flex-col">
+      <h1 className="mt-5 text-2xl font-bold text-white">ChatBox</h1>
+      <div className="flex-grow">
+        <ChatMessages />
       </div>
-    </>
+      <ChatPrompt />
+    </div>
   );
 };
 
