@@ -3,13 +3,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const callApi = async () => {
+export const callApi = async (prompt:string) => {
   try {
     const response = await axios.post(
       process.env.API_URL,
       {
         model: 'text-davinci-003',
-        prompt: 'Human: Hello\\nAI:',
+        prompt,
         temperature: 0.7,
         max_tokens: 256,
         stop: ['Human:', 'AI:'],
