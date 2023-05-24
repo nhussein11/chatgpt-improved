@@ -1,33 +1,34 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { BsSendPlus } from 'react-icons/bs';
-import axios from 'axios';
-
-type ChatLog = {
-  user: string;
-  message: string;
-};
 
 const ChatPrompt = () => {
   const [prompt, setPrompt] = useState<string>('');
-  const [log, setLog] = useState<ChatLog[]>([]);
+  const [isPromptEmpty, setIsPromptEmpty] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (prompt === '') {
+      setIsPromptEmpty(true);
+      return;
+    }
+
+    setIsPromptEmpty(false);
     console.log('submit');
     const response = await axios.post(
       'http://localhost:3000/api/create-completion',
       { prompt }
     );
     const data = response.data;
-    console.log(data);
+    console.log("data: ",data);
 
-    setLog([...log, { user: 'me', message: prompt }]);
     setPrompt('');
   };
 
   return (
     <div className="mb-5">
-      <div className="flex flex-row items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         <form
           className="flex flex-row items-center justify-center"
           onSubmit={handleSubmit}
@@ -42,6 +43,11 @@ const ChatPrompt = () => {
             <BsSendPlus className="ml-2 text-2xl text-white" />
           </button>
         </form>
+        {isPromptEmpty && (
+          <span className="text-red-500 mt-3 text-sm">
+            Please enter a prompt.
+          </span>
+        )}
       </div>
     </div>
   );
