@@ -1,34 +1,41 @@
-import axios from 'axios';
 import { useState } from 'react';
-import { BsSendPlus } from 'react-icons/bs';
+import { BsSendPlus, BsTrash } from 'react-icons/bs';
+import { useChatsStore } from '../../Context/chatsStore';
+import createCompletion from '../../services/createCompletion';
 
 const ChatPrompt = () => {
   const [prompt, setPrompt] = useState<string>('');
   const [isPromptEmpty, setIsPromptEmpty] = useState<boolean>(false);
+  const { addMessage,clearMessages } = useChatsStore();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     
-    if (prompt === '') {
+    if (prompt.trim() === '') {
       setIsPromptEmpty(true);
       return;
     }
 
     setIsPromptEmpty(false);
-    console.log('submit');
-    const response = await axios.post(
-      'http://localhost:3000/api/create-completion',
-      { prompt }
-    );
-    const data = response.data;
-    console.log("data: ",data);
-
+    addMessage({user: "user", text: prompt});
     setPrompt('');
+
+    const { data : completion } = await createCompletion(prompt);
+    addMessage({user: "gpt", text: completion});
+
   };
+
+  const handleCleanMessages = () => {
+    setPrompt('');
+    clearMessages();
+  }    
 
   return (
     <div className="mb-5">
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-row items-center justify-center">
+            <button onClick={handleCleanMessages}>
+          <BsTrash className="ml-2 text-2xl text-white" />
+        </button>
         <form
           className="flex flex-row items-center justify-center"
           onSubmit={handleSubmit}
