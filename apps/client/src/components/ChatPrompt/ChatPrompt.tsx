@@ -34,7 +34,7 @@ const ChatPrompt = () => {
     <div className="mb-5">
       <div className="flex flex-row items-center justify-center">
             <button onClick={handleCleanMessages}>
-          <BsTrash className="ml-2 text-2xl text-white" />
+          <BsTrash className="mx-4 text-2xl text-white" />
         </button>
         <form
           className="flex flex-row items-center justify-center"
@@ -47,7 +47,7 @@ const ChatPrompt = () => {
             onChange={(e) => setPrompt(e.target.value)}
           />
           <button>
-            <BsSendPlus className="ml-2 text-2xl text-white" />
+            <BsSendPlus className="ml-3 text-2xl text-white" />
           </button>
         </form>
         {isPromptEmpty && (
