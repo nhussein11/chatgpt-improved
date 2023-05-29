@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev-client": "nx serve client",
-    "dev-server": "nx serve server"
+    "dev-server": "nx serve server",
+    "prod-server": "export NODE_ENV=production && nx serve server",
   },
   "private": true,
   "dependencies": {
@@ -68,6 +69,7 @@
     "postcss": "8.4.21",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "rimraf": "^5.0.1",
     "tailwindcss": "3.2.7",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
@@ -82,5 +84,6 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+ }
 }
