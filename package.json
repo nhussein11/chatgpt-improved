@@ -5,7 +5,8 @@
   "scripts": {
     "dev-client": "nx serve client",
     "dev-server": "nx serve server",
-    "prod-server": "export NODE_ENV=production && nx serve server",
+    "prod-client": "export NODE_ENV=production && nx serve client",
+    "prod-server": "export NODE_ENV=production && nx serve server"
   },
   "private": true,
   "dependencies": {
@@ -84,6 +85,5 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
- }
+  }
 }
