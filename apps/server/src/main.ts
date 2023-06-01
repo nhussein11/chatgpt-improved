@@ -2,9 +2,21 @@ import express from 'express';
 import * as path from 'path';
 import cors from 'cors';
 import gptRouter from './routes/gptRoutes';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import { isProductionEnv } from '../../global-utils/environment';
 
 const app = express();
+
+const proxyOptions = {
+  target: 'https://chatgpt-improved-api.onrender.com',
+  changeOrigin: true,
+  headers: {
+    host: 'localhost:3000',
+  },
+};
+
+const proxy = createProxyMiddleware('/api', proxyOptions);
+app.use(proxy);
 
 app.use(cors());
 app.use(express.json());
