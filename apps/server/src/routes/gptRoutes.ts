@@ -12,7 +12,7 @@ gptRouter.get('/', async (_req, res) => {
     const response = await axios.post(
       process.env.API_URL,
       {
-        prompt,
+        prompt: "test",
         temperature: 0.7,
         max_tokens: 256,
         stop: ['Human:', 'AI:'],
