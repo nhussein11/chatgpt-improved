@@ -28,7 +28,6 @@ gptRouter.get('/', async (_req, res) => {
     console.log('response', response.data.choices[0].text);
   } catch (error) {
     console.error('MOCK ERROR: ', error);
-    throw error;
   }
   res.send({ message: 'Welcome to server!' });
 });
