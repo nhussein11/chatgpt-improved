@@ -1,39 +1,37 @@
 import { useState } from 'react';
 import { BsSendPlus, BsTrash } from 'react-icons/bs';
-import { useChatsStore } from '../../Context/chatsStore';
+import { useChatsStore } from '../../context/chatsStore';
 import createCompletion from '../../services/createCompletion';
 
 const ChatPrompt = () => {
   const [prompt, setPrompt] = useState<string>('');
   const [isPromptEmpty, setIsPromptEmpty] = useState<boolean>(false);
-  const { addMessage,clearMessages } = useChatsStore();
+  const { addMessage, clearMessages } = useChatsStore();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+
     if (prompt.trim() === '') {
       setIsPromptEmpty(true);
       return;
     }
 
     setIsPromptEmpty(false);
-    addMessage({user: "user", text: prompt});
+    addMessage({ user: 'user', text: prompt });
     setPrompt('');
-
-    const { data : completion } = await createCompletion(prompt);
-    addMessage({user: "gpt", text: completion});
-
+    const { data: completion } = await createCompletion(prompt);
+    addMessage({ user: 'gpt', text: completion });
   };
 
   const handleCleanMessages = () => {
     setPrompt('');
     clearMessages();
-  }    
+  };
 
   return (
     <div className="mb-5">
       <div className="flex flex-row items-center justify-center">
-            <button onClick={handleCleanMessages}>
+        <button onClick={handleCleanMessages}>
           <BsTrash className="mx-4 text-2xl text-white" />
         </button>
         <form
@@ -51,7 +49,7 @@ const ChatPrompt = () => {
           </button>
         </form>
         {isPromptEmpty && (
-          <span className="text-red-500 mt-3 text-sm">
+          <span className="mt-3 text-sm text-red-500">
             Please enter a prompt.
           </span>
         )}
