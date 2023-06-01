@@ -1,6 +1,6 @@
 import { RxAvatar } from 'react-icons/rx';
-import {AiOutlineRobot} from 'react-icons/ai'
-import { Message, useChatsStore } from '../../Context/chatsStore';
+import { AiOutlineRobot } from 'react-icons/ai';
+import { Message, useChatsStore } from '../../context/chatsStore';
 import { useEffect, useRef } from 'react';
 
 const ChatMessages = () => {
